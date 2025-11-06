@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Personalizada Pura</title>
+    
+    <style>
+        /* Estilo para garantir a centralização completa e as cores */
+        body {
+            background-color: #000000; /* Fundo Preto */
+            color: #ffffff; /* Escritas Brancas */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            
+            /* Centralização Total (Flexbox) */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+        }
+
+        /* Container principal */
+        .content-container {
+            width: 100%;
+            max-width: 650px;
+            padding: 40px;
+            border: 1px solid #333;
+            border-radius: 15px;
+            background-color: #111111; /* Um preto muito escuro para contraste */
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.2); /* Sombra amarela suave */
+        }
+
+        /* Título Amarelo e Centralizado */
+        h1 {
+            color: #FFD700; /* Amarelo Vibrante (Gold) */
+            font-size: 2.8rem;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        /* Lista (Formato de Lista com 10 Linhas) */
+        ul {
+            list-style: none; /* Remove marcadores */
+            padding: 0;
+            margin: 0 auto 40px auto;
+            text-align: left; /* Alinha o texto dentro da lista à esquerda para leitura */
+            max-width: 500px; 
+        }
+
+        li {
+            background-color: #222222; 
+            padding: 12px 20px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            border-left: 6px solid #FFD700; /* Destaque lateral em amarelo */
+            transition: background-color 0.3s;
+            font-size: 1.1rem;
+        }
+
+        /* Botão Personalizado (Usando tag 'a' estilizada) */
+        .custom-button {
+            /* Transforma o link em um bloco para centralizar e dimensionar */
+            display: inline-block; 
+            padding: 14px 30px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-decoration: none; /* Remove sublinhado padrão do link */
+            
+            /* Estilo do Botão */
+            background-color: #FFD700; /* Fundo Amarelo */
+            color: #000000; /* Texto Preto para forte contraste */
+            border: none;
+            border-radius: 50px; 
+            box-shadow: 0 6px 15px rgba(255, 215, 0, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .custom-button:hover {
+            background-color: #ffe566; /* Amarelo mais claro no hover */
+            box-shadow: 0 10px 20px rgba(255, 215, 0, 0.8);
+            transform: translateY(-3px); /* Efeito 3D sutil */
+        }
+    </style>
+</head>
+<body id="top">
+
+    <div class="content-container">
+
+        <!-- Título -->
+        <h1>Sobre nossa Feira Gastronômica</h1>
+
+        <!-- Lista de 10 Linhas -->
+        <ul>
+            <li>Local: Colégio Estadual João Gueno.</li>
+            <li>Endereço: R. Dalmira Souza Lunardon, 95 - São Dimas, Colombo - PR, 83411-060.</li>
+            <li>Tema Geral: Sabores do Paraná.</li>
+            <li>Horário: Das 11H às 14H.</li>
+            <li>Valor dos Pratos: R$ 5,00.</li>
+            <li>Valor do Refri (copo): R$ 2,00.</li>
+        </ul>
+
+        <!-- Botão Personalizado (Link para o topo da página sem JS) -->
+        <a href="index.html" class="custom-button">
+            &#x2190; Voltar para a Tela Inicial
+        </a>
+
+    </div>
+</body>
+</html>

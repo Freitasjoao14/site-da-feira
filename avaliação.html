@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avaliação da Feira de Bobó de Frango</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+   
+    <!-- Removido o footer antigo do head, pois será substituído por um botão no body -->
+   
+   <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #000000; /* Fundo preto */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 550px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #ff9933; 
+            margin-bottom: 5px;
+            font-size: 1.8em;
+        }
+
+        p {
+            color: #6a5a40;
+            margin-bottom: 25px;
+        }
+
+        .avaliacao-item {
+            margin-bottom: 25px;
+            padding: 18px;
+            border: 1px solid #4e4040;
+            border-radius: 8px;
+            background-color: #ffffff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        h3 {
+            margin-top: 0;
+            color: #4a3f30;
+            font-size: 1.15em;
+            border-bottom: 2px solid #ffcc66; 
+            padding-bottom: 8px;
+            margin-bottom: 15px;
+        }
+
+        .estrelas {
+            direction: rtl; 
+            display: inline-block;
+            unicode-bidi: bidi-override;
+        }
+
+        .estrelas input[type="radio"] {
+            display: none;
+        }
+
+        .estrelas label {
+            font-size: 35px;
+            color: #ccc; 
+            cursor: pointer;
+            padding: 0 3px;
+            transition: color 0.2s;
+        }
+
+        .estrelas input[type="radio"]:checked ~ label {
+            color: #ffcc00; 
+        }
+
+        .estrelas label:hover,
+        .estrelas label:hover ~ label {
+            color: #ffaa00; 
+        }
+
+        textarea {
+            width: 95%;
+            padding: 12px;
+            border: 1px solid #ffcc66; 
+            border-radius: 5px;
+            resize: vertical;
+            font-family: inherit;
+            font-size: 1em;
+        }
+
+        button {
+            background-color: #e65100; 
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 25px; 
+            cursor: pointer;
+            font-size: 1.2em;
+            font-weight: bold;
+            transition: background-color 0.3s, transform 0.1s;
+            margin-top: 20px;
+            width: 100%;
+            max-width: 300px;
+        }
+
+        button:hover {
+            background-color: #c04400;
+            transform: translateY(-2px);
+        }
+
+        /* Novo estilo para o botão de voltar - combina com o botão principal */
+        #backButton {
+            background-color: #e65100; /* Mesma cor do botão enviar */
+            color: white;
+            padding: 10px 20px; /* Um pouco menor para não competir com o botão principal */
+            border: none;
+            border-radius: 25px; /* Arredondado como os outros */
+            cursor: pointer;
+            font-size: 1em; /* Menor que o botão enviar */
+            font-weight: bold;
+            transition: background-color 0.3s, transform 0.1s; /* Mesmo efeito de hover */
+            margin-bottom: 20px; /* Espaço abaixo para separar do título */
+            display: inline-flex; /* Para alinhar ícone e texto */
+            align-items: center;
+            gap: 8px; /* Espaço entre ícone e texto */
+        }
+
+        #backButton:hover {
+            background-color: #c04400; /* Mesmo hover do botão enviar */
+            transform: translateY(-2px); /* Leve elevação */
+        }
+
+        #backButton .material-icons {
+            font-size: 1.2em; /* Tamanho do ícone */
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        #mensagem-sucesso {
+            background-color: #ffffff;
+            color: #388e3c;
+            padding: 25px;
+            border-radius: 10px;
+            border: 1px solid #a5d6a7;
+            font-size: 1.1em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Novo botão de voltar adicionado aqui, no topo do container -->
+        <button id="backButton" onclick="goBack()">
+            <i class="material-icons">arrow_back</i> Voltar
+        </button>
+        
+        <h1>Avalie o Bobó de Frango! </h1>
+        
+
+        <form id="formAvaliacao">
+
+            <div class="avaliacao-item">
+                <h3>1. Comida </h3>
+                <div class="estrelas" id="avaliacao-comida">
+                    <input type="radio" id="comida-star5" name="comida" value="5" required><label for="comida-star5" title="Divino!">★</label>
+                    <input type="radio" id="comida-star4" name="comida" value="4"><label for="comida-star4" title="Saboroso!">★</label>
+                    <input type="radio" id="comida-star3" name="comida" value="3"><label for="comida-star3" title="Bom">★</label>
+                    <input type="radio" id="comida-star2" name="comida" value="2"><label for="comida-star2" title="Falta tempero">★</label>
+                    <input type="radio" id="comida-star1" name="comida" value="1"><label for="comida-star1" title="Não Gostei">★</label>
+                </div>
+            </div>
+
+            <div class="avaliacao-item">
+                <h3>2. Decoração</h3>
+                <div class="estrelas" id="avaliacao-decoracao">
+                    <input type="radio" id="decoracao-star5" name="decoracao" value="5" required><label for="decoracao-star5" title="Excelente">★</label>
+                    <input type="radio" id="decoracao-star4" name="decoracao" value="4"><label for="decoracao-star4" title="Muito Bom">★</label>
+                    <input type="radio" id="decoracao-star3" name="decoracao" value="3"><label for="decoracao-star3" title="Bom">★</label>
+                    <input type="radio" id="decoracao-star2" name="decoracao" value="2"><label for="decoracao-star2" title="Ruim">★</label>
+                    <input type="radio" id="decoracao-star1" name="decoracao" value="1"><label for="decoracao-star1" title="Péssimo">★</label>
+                </div>
+            </div>
+
+            <div class="avaliacao-item">
+                <h3>3. Atendimento</h3>
+                <div class="estrelas" id="avaliacao-atendimento">
+                    <input type="radio" id="atendimento-star5" name="atendimento" value="5" required><label for="atendimento-star5" title="Excelente">★</label>
+                    <input type="radio" id="atendimento-star4" name="atendimento" value="4"><label for="atendimento-star4" title="Muito Bom">★</label>
+                    <input type="radio" id="atendimento-star3" name="atendimento" value="3"><label for="atendimento-star3" title="Bom">★</label>
+                    <input type="radio" id="atendimento-star2" name="atendimento" value="2"><label for="atendimento-star2" title="Ruim">★</label>
+                    <input type="radio" id="atendimento-star1" name="atendimento" value="1"><label for="atendimento-star1" title="Péssimo">★</label>
+                </div>
+            </div>
+            
+            <div class="avaliacao-item">
+                <h3>Sugestões e Elogios (Opcional)</h3>
+                <textarea id="comentarios" rows="4" placeholder="Algum toque especial para o próximo bobó?"></textarea>
+            </div>
+
+            <button type="submit">Enviar Avaliação!</button>
+        </form>
+
+        <div id="mensagem-sucesso" class="hidden">
+            <h2>🎉  Avaliação Enviada com Sucesso!</h2>
+            <p>Obrigado por nos ajudar.</p>
+        </div>
+    </div>
+
+    <script>
+        // Função para o botão de voltar
+        function goBack() {
+            window.history.back(); // Volta à página anterior
+            // Se quiser sempre voltar para index.html, use: window.location.href = 'index.html';
+        }
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
+
